@@ -12,6 +12,7 @@ stages{
 
             sh '''
             aws s3 cp s3://mamuu/pandu/${BRANCH}/${BUILDNUM}/hello-${BUILDNUM}.war .
+            ls -l
             IFS=, read -ra input <<< "${SERVERIP}"
             for ip in {$input[@]}
             do
