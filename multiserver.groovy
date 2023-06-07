@@ -14,7 +14,7 @@ stages{
             aws s3 cp s3://mamuu/pandu/${BRANCH}/${BUILDNUM}/hello-${BUILDNUM}.war .
             ls -l
             IFS=, read -ra input <<< "${SERVERIP}"
-            for ip in {$input[@]}
+            for ip in "${input[@]}"
             do
             echo "$ip"
             scp -o StrictHostKeyChecking=no -i /tmp/mamu1031.pem hello-${BUILDNUM}.war ec2-user@$ip:/var/lib/tomcat/webapps
